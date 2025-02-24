@@ -58,26 +58,22 @@ print(python_json)
 ```
 
 ---
-### data is in Python style Any Type:str, int, list, dict...etc
+
 #### **2⃣ Visualize JSON Data**
 ```python
-from JsonCrack.Cracker import JSON
-data = {
-    "name": "Alice",
-    "active": True,
-    "address": None
-}
-json_obj = JSON(data)
 json_obj.visualize(display=True, output_file="visualize_output",)
 ```
 📌 **This will open a PNG file with name visualize_output displaying the JSON structure as a vertical graph.**  
-
+**🟢 Output:**
+```html
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASoAAAD7CAYAAADdL9kRAAAABmJLR0QA/wD/AP+gvaeTAAAgAElEQVR4nO2deXhU1f3/37Nn3xey" alt="Image">
+```
 ---
 
-#### **3⃣ Convert & Visualize in One Step**
+#### **3⃣ Convert & Visualize in One Step with display(default)**
 ```python
 from JsonCrack.Cracker import JSON
-data = [{
+data =  [{
     "name": "Alice",
     "active": True,
     "address": None
@@ -91,10 +87,18 @@ data = [{
 json_obj = JSON(data)
 json_obj.visualize()
 ```
+**🟢 Output:**
+```html
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAqEAAAFbCAYAAADlQ1e8AAAABmJLR0QA/wD/AP+gvaeTAAAgAElEQVR4nOzdeVzN2f8H8FerVsKQ" alt="Image">
+```
 #### **3⃣ Convert & save Visualize in One Step without display**
 ```python
 from JsonCrack.Cracker import JSON
-data = "Hana"
+data = {
+    "name": "Alice",
+    "active": True,
+    "address": None
+}
 json_obj = JSON(data)
 json_obj.visualize(display=False)
 ```
