@@ -33,12 +33,12 @@
 ---
 
 ## 🔥 Quick Start
-
-### **1⃣ Convert JavaScript-style JSON to Python**
+### data is in java script style
+#### **1⃣ Convert JavaScript-style JSON to Python**
 ```python
 from JsonCrack.Cracker import JSON
 
-js_data = '''
+data = '''
 {
     "name": "Alice",
     "active": true,
@@ -47,39 +47,45 @@ js_data = '''
 '''
 
 # Convert JS JSON to Python format
-json_obj = JSON(js_data)
+json_obj = JSON(data)
 python_json = json_obj.convert_js_to_python()
 print(python_json)
 ```
+
 **🟢 Output:**
 ```python
 {'name': 'Alice', 'active': True, 'address': None}
 ```
 
 ---
-
-### **2⃣ Visualize JSON Data**
+### data is in Python style Any Type:str, int, list, dict...etc
+#### **2⃣ Visualize JSON Data**
 ```python
-json_obj.visualize(display=True)
+json_obj.visualize(display=True, output_file="visualize_output",)
 ```
-📌 **This will open a PNG file displaying the JSON structure as a vertical graph.**  
+📌 **This will open a PNG file with name visualize_output displaying the JSON structure as a vertical graph.**  
 
 ---
 
-### **3⃣ Convert & Visualize in One Step**
+#### **3⃣ Convert & Visualize in One Step**
 ```python
 json_obj = JSON(js_data)
 json_obj.convert_js_to_python()
-json_obj.visualize(display=True)
+json_obj.visualize()
 ```
-
+#### **3⃣ Convert & save Visualize in One Step without display**
+```python
+json_obj = JSON(js_data)
+json_obj.convert_js_to_python()
+json_obj.visualize(display=False)
+```
 ---
 
 ## 🛠 Development
 
 1. **Clone the repository**:
    ```sh
-   git clone https://github.com/yourusername/JsonCrack.git
+   git clone https://github.com/MahmoudGShake/JsonCrack.git
    cd JsonCrack
    ```
 2. **Install dependencies**:
@@ -121,7 +127,7 @@ We welcome contributions! 🎉
 
 ## 🌟 Show Your Support
 
-🌟 **Star this repository** on [GitHub](https://github.com/yourusername/JsonCrack) if you find it useful!  
+🌟 **Star this repository** on [GitHub](https://github.com/MahmoudGShake/JsonCrack) if you find it useful!  
 💬 Feel free to open issues for **bug reports & feature requests**.  
 
 ---
