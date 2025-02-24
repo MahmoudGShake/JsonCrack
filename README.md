@@ -61,6 +61,13 @@ print(python_json)
 ### data is in Python style Any Type:str, int, list, dict...etc
 #### **2⃣ Visualize JSON Data**
 ```python
+from JsonCrack.Cracker import JSON
+data = {
+    "name": "Alice",
+    "active": True,
+    "address": None
+}
+json_obj = JSON(data)
 json_obj.visualize(display=True, output_file="visualize_output",)
 ```
 📌 **This will open a PNG file with name visualize_output displaying the JSON structure as a vertical graph.**  
@@ -69,14 +76,26 @@ json_obj.visualize(display=True, output_file="visualize_output",)
 
 #### **3⃣ Convert & Visualize in One Step**
 ```python
-json_obj = JSON(js_data)
-json_obj.convert_js_to_python()
+from JsonCrack.Cracker import JSON
+data = [{
+    "name": "Alice",
+    "active": True,
+    "address": None
+},
+    {
+        "name": "Salma",
+    "active": False,
+    "address": "New York"
+    }
+    ]
+json_obj = JSON(data)
 json_obj.visualize()
 ```
 #### **3⃣ Convert & save Visualize in One Step without display**
 ```python
-json_obj = JSON(js_data)
-json_obj.convert_js_to_python()
+from JsonCrack.Cracker import JSON
+data = "Hana"
+json_obj = JSON(data)
 json_obj.visualize(display=False)
 ```
 ---
