@@ -65,9 +65,7 @@ json_obj.visualize(display=True, output_file="visualize_output",)
 ```
 📌 **This will open a PNG file with name visualize_output displaying the JSON structure as a vertical graph.**  
 **🟢 Output:**
-```html
-<img src="https://raw.githubusercontent.com/MahmoudGShake/JsonCrack/refs/heads/master/assets/dict.png" alt="visualize_output.png">
-```
+![visualize_output](https://raw.githubusercontent.com/MahmoudGShake/JsonCrack/refs/heads/master/assets/dict.png)
 ---
 
 #### **3⃣ Convert & Visualize in One Step with display(default)**
@@ -88,9 +86,8 @@ json_obj = JSON(data)
 json_obj.visualize()
 ```
 **🟢 Output:**
-```html
-<img src="https://raw.githubusercontent.com/MahmoudGShake/JsonCrack/refs/heads/master/assets/list.png" alt="visualize_output.png">
-```
+![visualize_output](https://raw.githubusercontent.com/MahmoudGShake/JsonCrack/refs/heads/master/assets/list.png)
+
 #### **3⃣ Convert & save Visualize in One Step without display**
 ```python
 from JsonCrack.Cracker import JSON
