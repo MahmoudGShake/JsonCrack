@@ -1,6 +1,6 @@
 # JsonCrack 📊
 
-**JsonCrack** is a Python package that **visualizes JSON as a vertical graph** to help developers understand complex JSON structures easily.
+**JsonCrack** is a Python package that **visualizes JSON as a vertical graph** to help developers understand complex JSON structures easily Supporting drf-spectacular Schema.
 
 ---
 
@@ -9,6 +9,7 @@
 💚 **Generate vertical graph visualization** of JSON data  
 💚 **Automatically detects OS** to display the graph (`Windows`, `Mac`, `Linux`)  
 💚 **No need for a web interface**—runs locally  
+💚 **Support drf-spectacular**—Visualize Django Rest Framework Documentation Example Responses 
 
 ---
 
@@ -99,6 +100,19 @@ data = {
 json_obj = JSON(data)
 json_obj.visualize(display=False)
 ```
+#### **3⃣ Integration With Django**
+```python
+#add this to Django settings.py
+REST_FRAMEWORK={'DEFAULT_SCHEMA_CLASS': 'JsonCrack.AutoSchema'}
+```
+**🟢 Example Results:**
+![DRF Docs Exapmle](https://raw.githubusercontent.com/MahmoudGShake/JsonCrack/refs/heads/master/assets/drf_docs_example.png)
+http://localhost:8000/media/xhvo+f6^l-\IIXVAMJC1J.png
+![DRF Docs Exapmle 200](https://raw.githubusercontent.com/MahmoudGShake/JsonCrack/refs/heads/master/assets/drf_docs_example_200.png)
+http://localhost:8000/media/xhvo+f6^l-\HM2VFKK0VN.png
+![DRF Docs Exapmle 403](https://raw.githubusercontent.com/MahmoudGShake/JsonCrack/refs/heads/master/assets/drf_docs_example_403.png)
+http://localhost:8000/media/xhvo+f6^l-\2WB4HC5DAU.png
+![DRF Docs Exapmle 429](https://raw.githubusercontent.com/MahmoudGShake/JsonCrack/refs/heads/master/assets/drf_docs_example_429.png)
 ---
 
 ## 🛠 Development

@@ -1,5 +1,5 @@
 from JsonCrack.__init__ import *
-def visualize(data, output_file, display):
+def visualize(data, output_file, display,silent):
     """
     Visualizes a JSON structure as a vertical graph.
 
@@ -45,11 +45,14 @@ def visualize(data, output_file, display):
             elif os_type == "Linux":
                 os.system(f'xdg-open {file_path}')
             else:
-                print(f"Unsupported OS: {os_type}")
+                if not silent:
+                    print(f"Unsupported OS: {os_type}")
         else:
-            print(f"Error: PNG file not found! Expected at {file_path}")
-    print(f"{file_path} Saved Successfully")
-    if display:
+            if not silent:
+                print(f"Error: PNG file not found! Expected at {file_path}")
+    if not silent:
+        print(f"{file_path} Saved Successfully")
+    if display and not silent:
         print(f"{file_path} Displayed Successfully")
 
 def convert_js_to_python(data:str):
@@ -59,3 +62,61 @@ def convert_js_to_python(data:str):
         data,
         parse_constant=lambda x: {"null": None, "false": False, "true": True}.get(x, x),
     )
+class CodeDictionaryMapper:
+    def __init__(self, filename="code_mapping.json"):
+        self.filename = filename
+        self.load_data()
+
+    def generate_code(self):
+        """Generate a unique 10-digit alphanumeric code."""
+        while True:
+            code = ''.join(random.choices(string.ascii_uppercase + string.digits, k=10))
+            if code not in self.code_to_dict:
+                return code
+
+    def load_data(self):
+        """Load stored data from JSON file."""
+        if os.path.exists(self.filename):
+            with open(self.filename, "r") as file:
+                data = json.load(file)
+                self.code_to_dict = data.get("code_to_dict", {})
+                self.dict_to_code = {frozenset(eval(k)): v for k, v in data.get("dict_to_code", {}).items()}
+        else:
+            self.code_to_dict = {}
+            self.dict_to_code = {}
+
+    def save_data(self):
+        """Save mappings to JSON file."""
+        with open(self.filename, "w") as file:
+            json.dump({
+                "code_to_dict": self.code_to_dict,
+                "dict_to_code": {str(k): v for k, v in self.dict_to_code.items()}
+            }, file)
+
+    def freeze_dict(self, d):
+        """ Recursively converts a dictionary into an immutable structure (frozenset). """
+        if isinstance(d, dict):
+            return frozenset((key, self.freeze_dict(value)) for key, value in d.items())
+        elif isinstance(d, list):
+            return tuple(self.freeze_dict(item) for item in d)  # Convert lists to tuples
+        return d  # Leave other types unchanged
+    def add_entry(self, data_dict):
+        """Add a dictionary and generate a unique code for it."""
+        #data_dict_frozen = frozenset(data_dict.items())  # Convert dict to immutable format
+        data_dict_frozen = self.freeze_dict(data_dict)  # Freeze dictionary recursively
+        if data_dict_frozen in self.dict_to_code:
+            return self.dict_to_code[data_dict_frozen]  # Return existing code
+
+        code = self.generate_code()
+        self.code_to_dict[code] = data_dict  # Store dictionary
+        self.dict_to_code[data_dict_frozen] = code  # Store reverse lookup
+        self.save_data()  # Save to file
+        return code
+
+    def get_dict_by_code(self, code):
+        """Retrieve dictionary by code."""
+        return self.code_to_dict.get(code)
+
+    def get_code_by_dict(self, data_dict):
+        """Retrieve code by dictionary."""
+        return self.dict_to_code.get(frozenset(data_dict.items()))

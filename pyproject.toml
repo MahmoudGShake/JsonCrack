@@ -5,13 +5,16 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "JsonCrack"
 version = "0.1.0"
-description = "A Python package to visualize JSON as a vertical graph."
+description = "A Python package to visualize JSON as a vertical graph(support drf-spectacular)."
 readme = "README.md"
 authors = [{ name = "Mahmoud Gamal", email = "mahmoudgshaker2018@gmail.com" }]
 license = { text = "MIT" }
 dependencies = [
-    "graphviz"
+    "graphviz","Django"
 ]
+
+[tool.setuptools]
+packages = ["JsonCrack"]  # Explicitly include only the JsonCrack package
 
 [project.urls]
 Repository = "https://github.com/MahmoudGShake/JsonCrack.git"
