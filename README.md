@@ -1,3 +1,4 @@
+[![PyPI Downloads](https://static.pepy.tech/badge/jsoncrack)](https://pepy.tech/projects/jsoncrack)[![PyPI Downloads](https://static.pepy.tech/badge/jsoncrack/month)](https://pepy.tech/projects/jsoncrack)[![PyPI Downloads](https://static.pepy.tech/badge/jsoncrack/week)](https://pepy.tech/projects/jsoncrack)
 # JsonCrack 📊
 
 **JsonCrack** is a Python package that **visualizes JSON as a vertical graph** to help developers understand complex JSON structures easily Supporting drf-spectacular Schema.

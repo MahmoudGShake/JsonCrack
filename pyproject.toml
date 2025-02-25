@@ -10,7 +10,7 @@ readme = "README.md"
 authors = [{ name = "Mahmoud Gamal", email = "mahmoudgshaker2018@gmail.com" }]
 license = { text = "MIT" }
 dependencies = [
-    "graphviz","Django"
+    "graphviz","drf-spectacular"
 ]
 
 [tool.setuptools]
